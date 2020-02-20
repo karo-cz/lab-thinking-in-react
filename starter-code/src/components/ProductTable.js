@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import ProductRow from './ProductRow';
 
 const ProductTable = props => {
-  console.log('Test', props.products.data);
+  let filtered = props.products.data.filter(product => {
+    return product.name.toLowerCase().includes(props.search.toLowerCase());
+  });
+
   return (
     <div>
       <table>
@@ -13,8 +16,8 @@ const ProductTable = props => {
           </tr>
         </thead>
         <tbody>
-          {props.products.data.map(el => {
-            return <ProductRow name={el.name} price={el.price} />;
+          {filtered.map((el, i) => {
+            return <ProductRow item={el} key={i} />;
           })}
         </tbody>
       </table>

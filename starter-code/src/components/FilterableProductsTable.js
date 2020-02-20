@@ -15,7 +15,6 @@ export default class FilterableProductsTable extends Component {
   };
 
   render() {
-    console.log(productList);
     return (
       <div>
         <h1>IRONSTORE</h1>
@@ -23,7 +22,10 @@ export default class FilterableProductsTable extends Component {
           search={this.state.searchText}
           updateSearchText={this.updateSearchText}
         />
-        <ProductTable products={productList} />
+        <ProductTable
+          products={this.state.productList}
+          search={this.state.searchText}
+        />
       </div>
     );
   }
